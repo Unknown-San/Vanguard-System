@@ -1,0 +1,5 @@
+telethon
+aiohttp
+heroku3
+pillow
+spamwatch
