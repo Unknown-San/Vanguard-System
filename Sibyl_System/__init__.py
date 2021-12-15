@@ -18,7 +18,7 @@ logging.basicConfig(
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
 )
-ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "Sibyl_System\\elevated_users.json")
+ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "Sibyl_System/elevated_users.json")
 with open(ELEVATED_USERS_FILE, "r") as f:
     data = json.load(f)
 
