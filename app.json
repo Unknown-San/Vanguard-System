@@ -28,11 +28,11 @@
          "description": "readme.",
          "value": ""
       },
-      "Inspectors": {
+      "INSPECTORS": {
          "description": "see readme",
          "value": ""
       },
-      "Enforcers": {
+      "ENFORCERS": {
          "description": "readme plz",
          "value": ""
       },
