@@ -1,5 +1,6 @@
 telethon
-aiohttp
+aiohttp 
 heroku3
 pillow
-spamwatch
+dnspython
+motor
