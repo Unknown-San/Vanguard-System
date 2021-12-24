@@ -1,14 +1,13 @@
-import logging
-import spamwatch
 from telethon import TelegramClient
-from telethon.sessions import MemorySession
 from functools import wraps
 from .strings import (
     scan_approved_string,
     bot_gban_string,
+    proof_string,
     forced_scan_string,
 )
 from .utils import FlagParser, ParseError
+
 from Sibyl_System import (
     Sibyl_logs,
     Sibyl_approved_logs,
@@ -16,8 +15,8 @@ from Sibyl_System import (
     BOT_TOKEN,
     API_ID_KEY,
     API_HASH_KEY,
-    apiClient
 )
+from Sibyl_System.plugins.Mongo_DB.gbans import update_gban, delete_gban
 
 
 class SibylClient(TelegramClient):
@@ -32,10 +31,9 @@ class SibylClient(TelegramClient):
         self.processing = 0
         self.processed = 0
         self.groups = {}
-        self.API_CLIENT: spamwatch.Client = apiClient
         if BOT_TOKEN:
             self.bot = TelegramClient(
-                MemorySession(), api_id=API_ID_KEY, api_hash=API_HASH_KEY
+                "SibylSystem", api_id=API_ID_KEY, api_hash=API_HASH_KEY
             ).start(bot_token=BOT_TOKEN)
         super().__init__(*args, **kwargs)
 
@@ -97,6 +95,14 @@ class SibylClient(TelegramClient):
                 logs,
                 f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
             )
+            await self.send_message(
+                -1001638801363,
+                f"/gban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
+            await self.send_message(
+                -1001638801363,
+                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
         else:
             await self.send_message(
                 logs,
@@ -105,6 +111,14 @@ class SibylClient(TelegramClient):
             await self.send_message(
                 logs,
                 f"/fban [{target}](tg://user?id={target}) Auto Gban[${msg_id}] {reason}",
+            )
+            await self.send_message(
+                -1001638801363,
+                f"/gban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
+            await self.send_message(
+                -1001638801363,
+                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
             )
         if bot:
             await self.send_message(
@@ -120,28 +134,31 @@ class SibylClient(TelegramClient):
             )
         if not target:
             return False
-        if self.API_CLIENT:
-            try:
-               self.API_CLIENT.add_ban(user_id=int(target), reason=reason, message=message)
-            except Exception as e:
-                logging.error(f"Failed to add ban to spamwatch: {e}")
-                pass
+        await update_gban(
+            victim=int(target),
+            reason=reason,
+            proof_id=int(msg_id),
+            enforcer=int(enforcer),
+            message=message,
+        )
 
     async def ungban(self, target: int = None, reason: str = None) -> bool:
         if self.gban_logs:
             logs = self.gban_logs
         else:
             logs = self.log
+        if not (await delete_gban(target)):
+            return False
         await self.send_message(
             logs, f"/ungban [{target}](tg://user?id={target}) {reason}"
         )
         await self.send_message(
             logs, f"/unfban [{target}](tg://user?id={target}) {reason}"
         )
-        if self.API_CLIENT:
-            try:
-               self.API_CLIENT.delete_ban(user_id=int(target))
-            except Exception as e:
-                logging.error(f"Failed to add ban to spamwatch: {e}")
-                pass
+        await self.send_message(
+            -1001638801363, f"/ungban [{target}](tg://user?id={target}) {reason}"
+        )
+        await self.send_message(
+            -1001638801363, f"/unfban [{target}](tg://user?id={target}) {reason}"
+        )
         return True
