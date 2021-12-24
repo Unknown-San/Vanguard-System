@@ -15,6 +15,14 @@ Cymatic Scan Request!
 **Scan Source:** {chat}
 **Target Message:** `{message}`
 """
+proof_string = """
+**Case file for** - {proof_id} :
+┣━**Reason**: {reason}
+┗━**Message**
+         ┣━[Nekobin]({paste})
+         ┗━[DelDog]({url})"""
+
+
 forced_scan_string = """
 $FORCED
 **Inspector:** {ins}
