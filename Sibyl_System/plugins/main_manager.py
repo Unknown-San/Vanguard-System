@@ -295,7 +295,7 @@ async def revive(event):
     executor = await event.get_sender()
     if event.sender_id in ENFORCERS:
         chatlink = f"t.me/c/{(str(event.chat_id)).replace('-100', '')}/{event.id}"
-        await event.reply("Connecting to Sibyl for a cymatic revert.")
+        await event.reply("Connecting to Scythe for a cymatic revert.")
         msg = await System.send_message(Sibyl_logs, revert_request_string.format(enforcer=executor.id, spammer=int(user_id), chat=chatlink))
         revert_request[msg.id] = {"user_id":user_id, "chat_id":event.chat_id, "msg_id":event.id}
         return
