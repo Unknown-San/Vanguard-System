@@ -192,7 +192,7 @@ async def scan(event, flags):
         
         creator, admins = await get_chat_creator_and_admins(event, ts_chat.id, True)
 
-        await event.reply("Connecting to Sibyl for a cymatic scan.")
+        await event.reply("Connecting to Scythe for a cymatic scan.")
 
         if flags.f and executer.id in INSPECTORS:
             msg = await System.send_message(
@@ -248,7 +248,7 @@ async def scan(event, flags):
     if replied.media:
         await replied.forward_to(Sibyl_logs)
     
-    await event.reply("Connecting to Sibyl for a cymatic scan.")
+    await event.reply("Connecting to Scythe for a cymatic scan.")
     if req_proof and req_user:
         await replied.forward_to(Sibyl_logs)
         await System.gban(
@@ -305,7 +305,7 @@ async def revive(event):
     ):
         await a.edit("User is not gbanned.")
         return
-    await a.edit("Revert request sent to sibyl. This might take 10minutes or so.")
+    await a.edit("Revert request sent to Scythe. This might take 10minutes or so.")
 
 
 @System.on(system_cmd(pattern=r"sibyl logs"))
