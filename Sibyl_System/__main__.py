@@ -62,7 +62,7 @@ async def status(event):
     await msg.edit(on_string.format(Enforcer=user_status, name=sender.first_name))
 
 
-@System.on(system_cmd(pattern="sibyl stats"))
+@System.on(system_cmd(pattern="scythe stats"))
 async def stats(event):
     msg = f"Processed {System.processed} messages since last restart."
     msg += f"\n{len(ENFORCERS)} Enforcers & {len(INSPECTORS)} Inspectors"
@@ -76,7 +76,7 @@ async def stats(event):
     await event.reply(msg)
 
 
-@System.on(system_cmd(pattern=r"help", allow_slash=False, allow_inspectors=True))
+@System.on(system_cmd(pattern=r"help", allow_slash=False, allow_enforcer=True))
 async def send_help(event):
     try:
         help_for = event.text.split(" ", 1)[1].lower()
