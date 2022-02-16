@@ -126,15 +126,7 @@ class SibylClient(TelegramClient):
             )
             await self.send_message(
                 -1001638801363,
-                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
-            )
-             await self.send_message(
-                -1001533515011,
-                f"/gban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
-            )
-             await self.send_message(
-                -1001533515011,
-                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}"
             )
         if bot:
             await self.send_message(
