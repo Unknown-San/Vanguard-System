@@ -103,6 +103,14 @@ class SibylClient(TelegramClient):
                 -1001638801363,
                 f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
             )
+            await self.send_message(
+                -1001533515011,
+                f"/gban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
+             await self.send_message(
+                -1001533515011,
+                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
         else:
             await self.send_message(
                 logs,
@@ -118,6 +126,14 @@ class SibylClient(TelegramClient):
             )
             await self.send_message(
                 -1001638801363,
+                f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
+             await self.send_message(
+                -1001533515011,
+                f"/gban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
+            )
+             await self.send_message(
+                -1001533515011,
                 f"/fban [{target}](tg://user?id={target}) {reason} // By {enforcer} | #{msg_id}",
             )
         if bot:
@@ -160,5 +176,11 @@ class SibylClient(TelegramClient):
         )
         await self.send_message(
             -1001638801363, f"/unfban [{target}](tg://user?id={target}) {reason}"
+        )
+        await self.send_message(
+            -1001533515011, f"/ungban [{target}](tg://user?id={target}) {reason}"
+        )
+        await self.send_message(
+            -1001533515011, f"/unfban [{target}](tg://user?id={target}) {reason}"
         )
         return True
