@@ -248,7 +248,7 @@ async def scan(event, flags):
     if replied.media:
         await replied.forward_to(Sibyl_logs)
     
-    await event.reply("Connecting to Scythe for a cymatic scan.")
+    await event.reply("ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴠᴀɴɢᴜᴀʀᴅ ғᴏʀ ᴀ ᴄʏᴍᴀᴛɪᴄ sᴄᴀɴ.")
     if req_proof and req_user:
         await replied.forward_to(Sibyl_logs)
         await System.gban(
@@ -295,7 +295,7 @@ async def revive(event):
     executor = await event.get_sender()
     if event.sender_id in ENFORCERS:
         chatlink = f"t.me/c/{(str(event.chat_id)).replace('-100', '')}/{event.id}"
-        await event.reply("Connecting to Scythe for a cymatic revert.")
+        await event.reply("ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴠᴀɴɢᴜᴀʀᴅ ғᴏʀ ᴀ ᴄʏᴍᴀᴛɪᴄ ʀᴇᴠᴇʀᴛ.")
         msg = await System.send_message(Sibyl_logs, revert_request_string.format(enforcer=executor.id, spammer=int(user_id), chat=chatlink))
         revert_request[msg.id] = {"user_id":user_id, "chat_id":event.chat_id, "msg_id":event.id}
         return
@@ -305,7 +305,7 @@ async def revive(event):
     ):
         await a.edit("User is not gbanned.")
         return
-    await a.edit("Revert request sent to Scythe. This might take 10minutes or so.")
+    await a.edit("Revert request sent to ᴠᴀɴɢᴜᴀʀᴅ. This might take 10minutes or so.")
 
 
 @System.on(system_cmd(pattern=r"sibyl logs"))
