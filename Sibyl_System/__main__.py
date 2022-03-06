@@ -40,27 +40,28 @@ for load in to_load:
         print("------------------------------------")
 
 
-@System.on(system_cmd(pattern=r"scyinfo", allow_enforcer=True))
+@System.on(system_cmd(pattern=r"crinfo", allow_enforcer=True))
 async def status(event):
-    msg = await event.reply("Diagnosing Scythe System.")
+    msg = await event.reply("ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴠ ᴀ ɴ ɢ ᴜ ᴀ ʀ ᴅ ᴄᴏʀᴇ . . .")
     time.sleep(1)
-    await msg.edit("Sequencing Scythe Code  ■□□□□")
+    await msg.edit("ᴄᴏɴɴᴇᴄᴛᴇᴅ!!")
     time.sleep(1)
-    await msg.edit("Sequencing Scythe Code  ■■□□□")
+    await msg.edit("ɪɴɪᴛɪᴀʟɪsɪɴɢ ᴄᴏᴅᴇ sᴇǫᴜᴇɴᴄᴇ ◆◇◇")
     time.sleep(1)
-    await msg.edit("Sequencing Scythe Code  ■■■□□")
+    await msg.edit("ɪɴɪᴛɪᴀʟɪsɪɴɢ ᴄᴏᴅᴇ sᴇǫᴜᴇɴᴄᴇ ◆◆◇")
     time.sleep(1)
-    await msg.edit("Sequencing Scythe Code  ■■■■□")
+    await msg.edit("| ᴄʜᴇᴄᴋɪɴɢ ᴜsᴇʀ ɪᴅ |")
     time.sleep(1)
-    await msg.edit("Sequencing Scythe Code  ■■■■■")
+    await msg.edit("| ᴀᴄᴄᴇss ɢʀᴀɴᴛᴇᴅ |")
     time.sleep(1)
-    await msg.edit("Connection successful!")
+    await msg.edit("ʏᴏᴜʀ sᴛᴀᴛᴜs")
     time.sleep(2)
     sender = await event.get_sender()
     user_status = "Inspector" if sender.id in INSPECTORS else "Enforcer"
     time.sleep(1)
-    await msg.edit(on_string.format(Enforcer=user_status, name=sender.first_name))
-
+    gif = "https://telegra.ph/file/687a25848e48ea3a57a6c.mp4"
+    await System.send_file(event.chat.id, gif, caption=on_string.format(Enforcer=user_status, name=sender.first_name))
+    await msg.delete()
 
 @System.on(system_cmd(pattern="scythe stats"))
 async def stats(event):
