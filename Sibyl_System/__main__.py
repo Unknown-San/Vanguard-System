@@ -39,7 +39,6 @@ for load in to_load:
         FAILED_TO_LOAD[load] = e
         print("------------------------------------")
 
-
 @System.on(system_cmd(pattern=r"vinfo", allow_enforcer=True))
 async def status(event):
     msg = await event.reply("ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴠ ᴀ ɴ ɢ ᴜ ᴀ ʀ ᴅ ᴄᴏʀᴇ . . .")
@@ -59,9 +58,8 @@ async def status(event):
     sender = await event.get_sender()
     user_status = "Inspector" if sender.id in INSPECTORS else "Enforcer"
     time.sleep(1)
-    gif = "https://telegra.ph/file/90badc1e67186f3da697e.mp4"
-    await System.send_file(event.chat.id, gif, caption=on_string.format(Enforcer=user_status, name=sender.first_name))
-    await msg.delete()
+    await msg.edit(on_string.format(Enforcer=user_status, name=sender.first_name))
+
 
 @System.on(system_cmd(pattern="vanguard stats"))
 async def stats(event):
