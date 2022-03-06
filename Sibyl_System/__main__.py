@@ -59,7 +59,7 @@ async def status(event):
     sender = await event.get_sender()
     user_status = "Inspector" if sender.id in INSPECTORS else "Enforcer"
     time.sleep(1)
-    gif = "https://telegra.ph/file/687a25848e48ea3a57a6c.mp4"
+    gif = "https://telegra.ph/file/90badc1e67186f3da697e.mp4"
     await System.send_file(event.chat.id, gif, caption=on_string.format(Enforcer=user_status, name=sender.first_name))
     await msg.delete()
 
