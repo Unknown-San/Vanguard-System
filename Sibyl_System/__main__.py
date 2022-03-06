@@ -40,7 +40,7 @@ for load in to_load:
         print("------------------------------------")
 
 
-@System.on(system_cmd(pattern=r"crinfo", allow_enforcer=True))
+@System.on(system_cmd(pattern=r"vinfo", allow_enforcer=True))
 async def status(event):
     msg = await event.reply("ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴠ ᴀ ɴ ɢ ᴜ ᴀ ʀ ᴅ ᴄᴏʀᴇ . . .")
     time.sleep(1)
@@ -63,7 +63,7 @@ async def status(event):
     await System.send_file(event.chat.id, gif, caption=on_string.format(Enforcer=user_status, name=sender.first_name))
     await msg.delete()
 
-@System.on(system_cmd(pattern="scythe stats"))
+@System.on(system_cmd(pattern="vanguard stats"))
 async def stats(event):
     msg = f"Processed {System.processed} messages since last restart."
     msg += f"\n{len(ENFORCERS)} Enforcers & {len(INSPECTORS)} Inspectors"
