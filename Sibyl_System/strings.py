@@ -1,7 +1,7 @@
 on_string = """
-✯ Connection successful! ✯
- ╘ Welcome {Enforcer} {name} ✯
- ╘ You are a valid user! ✯
+ ✯ ᴄᴏɴɴᴇᴄᴛɪᴏɴ sᴜᴄᴄᴇssғᴜʟ! ✯
+ ⇨ ᴡᴇʟᴄᴏᴍᴇ {Enforcer} {name} 
+ ⇨ ʏᴏᴜ ᴀʀᴇ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ!
 """
 
 # Make sure not to change these too much
