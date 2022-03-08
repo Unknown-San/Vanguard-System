@@ -55,9 +55,9 @@ async def status(event):
     time.sleep(1)
     await msg.edit("ʏᴏᴜʀ sᴛᴀᴛᴜs")
     time.sleep(2)
-    gif = "https://telegra.ph/file/90badc1e67186f3da697e.mp4"
-    await System.send_file(event.chat.id, gif, caption=on_string.format(Enforcer=user_status, name=sender.first_name))
-    await msg.delete()
+    
+    await msg.edit(on_string.format(Enforcer=user_status, name=sender.first_name))
+    
 
 
 @System.on(system_cmd(pattern="vanguard stats"))
