@@ -27,7 +27,7 @@ def can_ban(event):
 
 @System.bot.on(events.NewMessage(pattern="[/!]start"))
 async def sup(event):
-    await event.reply("Scythe is ready [.](https://telegra.ph/file/a347199d5506e7b2cf2b0.jpg)")
+    await event.reply("Vanguard is ready [.](https://telegra.ph/file/a347199d5506e7b2cf2b0.jpg)")
 
 
 @System.bot.on(events.NewMessage(pattern="[/!]help"))
